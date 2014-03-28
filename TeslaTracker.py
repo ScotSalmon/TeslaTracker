@@ -15,14 +15,14 @@ known_locs = { }
 try:
     f = open('locations.txt','r')
     for line in f:
-        line.strip()
+        line = line.strip()
         loc_name, loc_lat, loc_long = line.split(',')
+        if loc_name.split()[0] == 'unknown':
+            print "You need to give location " + line + " a name in locations.txt."
         known_locs[loc_name] = { 'lat': float(loc_lat), 'long': float(loc_long) }
     f.close()
 except IOError:
     pass
-
-print known_locs
 
 at_home = False
 stuck = False
