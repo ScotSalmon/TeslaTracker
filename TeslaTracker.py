@@ -1,7 +1,13 @@
 import pymongo
 from time import asctime, localtime, time
+from sys import argv
 
-client = pymongo.MongoClient()
+if len(argv) > 1:
+    host = argv[1]
+else:
+    host = "localhost"
+
+client = pymongo.MongoClient(host)
 db = client.tesla
 stream = db.tesla_stream
 
